@@ -17,9 +17,7 @@ RUN docker-php-ext-install \
     pdo \
     pdo_sqlite \
     mbstring \
-    tokenizer \
-    xml \
-    ctype
+    xml
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
