@@ -52,7 +52,7 @@ class ChatController extends Controller
 					$response = Http::withHeaders([
 						'Authorization' => 'Bearer ' . env('OPENROUTER_API_KEY'),
 
-						'HTTP-Referer' => 'http://localhost',
+						'HTTP-Referer' => config('app.url'),
 
 						'X-Title' => 'My AI Chat'
 
