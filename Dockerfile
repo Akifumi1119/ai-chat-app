@@ -30,6 +30,8 @@ RUN npm install
 
 RUN npm run build
 
+RUN touch database/database.sqlite
+
 RUN chmod -R 777 storage bootstrap/cache database
 
 EXPOSE 10000
