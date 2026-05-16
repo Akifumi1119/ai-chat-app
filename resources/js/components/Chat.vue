@@ -101,9 +101,9 @@ watch(userSet, (newValue) => {
 </script>
 
 <template>
-  <div style="padding: 40px">
+  <div class="container">
     <h1>AI Chat(試作品)</h1>
-    <p class="information">回数によっては制限がかかったり応答するモデルが変わったりします</p>
+    <p class="information">回数や混雑状況によっては制限がかかったり応答するモデルが変わったりします</p>
 
     <div v-if="!userSet" class="user-setting">
       <h2 class="user-setting-info">ユーザー名設定</h2>
@@ -136,8 +136,7 @@ watch(userSet, (newValue) => {
         class="massage"
       >
       <strong>
-        {{
-          message.role === 'user'
+        {{ message.role === 'user'
             ? userName
             : message.displayRole ?? message.role
         }}
@@ -146,30 +145,41 @@ watch(userSet, (newValue) => {
       <p style="white-space: pre-wrap">
         {{ message.content }}
       </p>
-    </div>
+      </div>
 
-    <p class="tips-send-message">Enterキーで送信</p>
-    <input
-      v-model="input"
-      @keyup.enter="sendMessage"
-      class="input-box"
-    />
+      <p class="tips-send-message">Enterキーで送信</p>
+      <input
+        v-model="input"
+        @keyup.enter="sendMessage"
+        class="input-box"
+      />
 
-    <button
-      @click="sendMessage"
-      :disabled="sendingFlg"
-      class="send-button"
-    >
-      送信
-    </button>
-    <button @click="resetMessage" class="reset-message">今までのやり取りをリセット</button>
+      <div class="chat-actions">
+        <button @click="sendMessage" :disabled="sendingFlg" class="send-button">
+          送信
+        </button>
+
+        <button @click="resetMessage" class="reset-message" >
+          今までのやり取りをリセット
+        </button>
+      </div>
+
     </div>
   </div>
 </template>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 .information {
   font-size: larger;
+  margin-bottom: 20px;
 }
 
 .user-setting {
@@ -178,38 +188,89 @@ watch(userSet, (newValue) => {
 
 .user-setting-info {
   font-size: larger;
-  margin: 0;
+  margin: 0 0 10px 0;
 }
 
 .tips-send-message {
   font-size: small;
   color: #666;
-  margin: 0;
-}
-
-.send-button {
-  margin-left: 10px;
-  padding: 10px;
-}
-
-.send-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+  margin: 10px 0;
 }
 
 .input-box {
-  width: 400px;
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.send-button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.send-button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
 }
 
 .massage {
   margin-bottom: 20px;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #fafafa;
+  word-break: break-word;
 }
 
 .reset-message {
-  margin-left: 40px;
-  height: 45px;
+  margin-top: 10px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* PC */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .information {
+    font-size: 14px;
+  }
+
+  .send-button,
+  .reset-message {
+    width: 100%;
+  }
+
+  .massage {
+    padding: 12px;
+  }
 }
 </style>
