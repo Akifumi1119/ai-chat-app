@@ -2,8 +2,11 @@
 import { ref, watch } from 'vue';
 import axios from 'axios';
 import Footer from './Footer.vue';
+import { useToast } from 'vue-toastification';
 
 const input = ref(''); // メッセージ入力欄
+
+const toast = useToast();
 
 // メッセージ情報
 const messages = ref(
@@ -27,9 +30,14 @@ const tempUserName = ref('');
 
 // ユーザー名設定
 const setUserName = () => {
-  if (!tempUserName.value) return;
+  if (!tempUserName.value.trim()) {
+  // 入力がない場合はトーストで注意文を表示
+    toast.error('ユーザー名を入力してください');
 
-  userName.value = tempUserName.value;
+    return;
+  }
+
+  userName.value = tempUserName.value.trim();
 
   userSet.value = true;
 }
