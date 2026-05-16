@@ -102,7 +102,11 @@ watch(userSet, (newValue) => {
 
 <template>
   <div class="container">
-    <h1>AI Chat(試作品)</h1>
+    <div class="title">
+      <h1>AI Chat(試作品)</h1>
+      <!-- <p class="develop-by">作:A.D</p> -->
+    </div>
+    
     <p class="information">回数や混雑状況によっては制限がかかったり応答するモデルが変わったりします</p>
 
     <div v-if="!userSet" class="user-setting">
@@ -169,6 +173,16 @@ watch(userSet, (newValue) => {
 
     </div>
   </div>
+
+  <footer class="footer">
+    <p>Developed by Akifumi Doi</p>
+
+    <p>Vue3 / Laravel / OpenRouter</p>
+
+    <a href="https://github.com/Akifumi1119/ai-chat-app" target="_blank" rel="noopener noreferrer">
+      GitHub
+    </a>
+  </footer>
 </template>
 
 <style>
@@ -176,8 +190,25 @@ watch(userSet, (newValue) => {
   box-sizing: border-box;
 }
 
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   margin: 0;
+  min-height: 100vh;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.develop-by {
+  font-size: larger;
+  margin-left: 2rem;
 }
 
 .information {
@@ -244,13 +275,37 @@ body {
   align-items: center;
 }
 
-/* PC */
-.container {
-  max-width: 56.25rem;
-  margin: auto;
-  padding: 2.5rem;
+.footer {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-top: 0.0625rem solid #ccc;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  background: #fafafa;
 }
 
+.footer p {
+  margin: 0.3rem 0;
+}
+
+.footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* PC */
+.container {
+  width: 100%;
+  max-width: 56.25rem;
+  margin: 0 auto;
+  padding: 2.5rem;
+  flex: 1;
+}
 /* スマホ */
 @media (max-width: 768px) {
 
