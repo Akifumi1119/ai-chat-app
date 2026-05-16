@@ -115,6 +115,8 @@ watch(userSet, (newValue) => {
         class="input-box"
       />
 
+      <p class="tips-send-message">Enterキーで決定</p>
+
       <button
         @click="setUserName"
         class="send-button"
@@ -147,12 +149,13 @@ watch(userSet, (newValue) => {
       </p>
       </div>
 
-      <p class="tips-send-message">Enterキーで送信</p>
       <input
         v-model="input"
         @keyup.enter="sendMessage"
         class="input-box"
       />
+
+      <p class="tips-send-message">Enterキーで送信</p>
 
       <div class="chat-actions">
         <button @click="sendMessage" :disabled="sendingFlg" class="send-button">
@@ -179,38 +182,37 @@ body {
 
 .information {
   font-size: larger;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .user-setting {
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .user-setting-info {
   font-size: larger;
-  margin: 0 0 10px 0;
+  margin-bottom: 0.625rem;
 }
 
 .tips-send-message {
   font-size: small;
   color: #666;
-  margin: 10px 0;
+  margin: 0.625rem 0;
 }
 
 .input-box {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 0.75rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
 }
 
 .send-button {
-  padding: 12px 18px;
+  padding: 0.75rem 1.125rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  margin-top: 10px;
 }
 
 .send-button:disabled {
@@ -219,49 +221,49 @@ body {
 }
 
 .massage {
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 10px;
+  margin-bottom: 1.25rem;
+  border: 0.0625rem solid #ccc;
+  padding: 0.9375rem;
+  border-radius: 0.625rem;
   background: #fafafa;
   word-break: break-word;
 }
 
 .reset-message {
-  margin-top: 10px;
-  padding: 12px 18px;
-  border-radius: 8px;
+  padding: 0.75rem 1.125rem;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
 }
 
 .chat-actions {
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 0.625rem;
+  align-items: center;
 }
 
 /* PC */
 .container {
-  max-width: 900px;
+  max-width: 56.25rem;
   margin: auto;
-  padding: 40px;
+  padding: 2.5rem;
 }
 
 /* スマホ */
 @media (max-width: 768px) {
 
   .container {
-    padding: 15px;
+    padding: 0.9375rem;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .information {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .send-button,
@@ -270,7 +272,7 @@ body {
   }
 
   .massage {
-    padding: 12px;
+    padding: 0.75rem;
   }
 }
 </style>
